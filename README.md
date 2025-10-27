@@ -1,13 +1,13 @@
-## 📞 README — Sistema Aeroporto
+##  README — Sistema Aeroporto
 
-### ✈️ Descrição Geral
+### Descrição Geral
 
 O **Sistema Aeroporto** é uma aplicação desenvolvida em **Java (Swing)** para gerenciar voos, passagens e processos de check-in em um ambiente de simulação de aeroporto.
 O sistema permite o **cadastro de voos**, **emissão e aprovação de passagens**, além de **gerenciar o check-in** de passageiros em uma interface gráfica amigável.
 
 ---
 
-## 🧩 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 com.aeroporto/
@@ -32,7 +32,7 @@ com.aeroporto/
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 * **Linguagem:** Java 17+
 * **Interface gráfica:** Swing (`JFrame`, `JPanel`, `JButton`, `JLabel`, etc.)
@@ -42,13 +42,13 @@ com.aeroporto/
 
 ---
 
-## 🧠 Entidades e Classes
+## Entidades e Classes
 
-### 🛫 Classe `Voo` (`com.aeroporto.Voos.Voo`)
+### Classe `Voo` (`com.aeroporto.Voos.Voo`)
 
 Responsável por representar os **voos cadastrados** no sistema e gerenciar o fluxo de assentos, reservas e check-ins.
 
-#### 🔹 Atributos Principais
+#### Atributos Principais
 
 | Atributo            | Tipo                     | Descrição                                                   |
 | ------------------- | ------------------------ | ----------------------------------------------------------- |
@@ -77,7 +77,7 @@ Responsável por representar os **voos cadastrados** no sistema e gerenciar o fl
 
 ---
 
-### 🧟‍♂️ Classe `Passageiro` (`com.aeroporto.Passagens.Passageiro`)
+### Classe `Passageiro` (`com.aeroporto.Passagens.Passageiro`)
 
 Representa os **passageiros** e suas informações pessoais e de voo.
 
@@ -96,7 +96,7 @@ Representa os **passageiros** e suas informações pessoais e de voo.
 
 ---
 
-### 🗾 Classe `Dados` (`com.aeroporto.Dados.Dados`)
+### Classe `Dados` (`com.aeroporto.Dados.Dados`)
 
 Gerencia as **coleções principais** do sistema (lista de voos, consultas e relatórios).
 
@@ -108,7 +108,7 @@ Gerencia as **coleções principais** do sistema (lista de voos, consultas e rel
 
 ---
 
-### 🧩 Classe `AdicionarVoo` (`com.aeroporto.Voos.AdicionarVoo`)
+### Classe `AdicionarVoo` (`com.aeroporto.Voos.AdicionarVoo`)
 
 Interface gráfica para **cadastrar novos voos**.
 Permite inserir número do voo, origem, destino, horários e quantidade de assentos.
@@ -119,7 +119,7 @@ Permite inserir número do voo, origem, destino, horários e quantidade de assen
 
 ---
 
-### 🌿 Classe `AdicionarPassagem` (`com.aeroporto.Passagens.AdicionarPassagem`)
+### Classe `AdicionarPassagem` (`com.aeroporto.Passagens.AdicionarPassagem`)
 
 Interface responsável por **registrar passagens** em voos existentes.
 
@@ -130,7 +130,7 @@ Interface responsável por **registrar passagens** em voos existentes.
 
 ---
 
-### ✅ Classe `AprovarPassagem` (`com.aeroporto.Passagens.AprovarPassagem`)
+### Classe `AprovarPassagem` (`com.aeroporto.Passagens.AprovarPassagem`)
 
 Gerencia a **aprovação ou reprovação de passagens**.
 
@@ -146,7 +146,7 @@ Gerencia a **aprovação ou reprovação de passagens**.
 
 ---
 
-### 🛃 Classe `CheckIn` (`com.aeroporto.Passagens.CheckIn`)
+### Classe `CheckIn` (`com.aeroporto.Passagens.CheckIn`)
 
 Gerencia o **processo de embarque dos passageiros** com passagens aprovadas.
 
@@ -159,7 +159,7 @@ Gerencia o **processo de embarque dos passageiros** com passagens aprovadas.
 
 ---
 
-## 🔁 Fluxo de Funcionamento
+## Fluxo de Funcionamento
 
 ```mermaid
 flowchart TD
@@ -177,7 +177,7 @@ D --> E[Embarque Confirmado]
 
 ---
 
-## 🧮 Diagrama de Classes (Simplificado)
+## Diagrama de Classes (Simplificado)
 
 ```mermaid
 classDiagram
@@ -213,15 +213,15 @@ classDiagram
 
 ---
 
-## 🧽 Execução
+##  Execução
 
-### ✅ Pré-requisitos
+### Pré-requisitos
 
 * Java 17+
 * IDE com suporte a Swing
 * Projeto estruturado conforme os pacotes `com.aeroporto.*`
 
-### ▶️ Como Executar
+### Como Executar
 
 1. Compile todas as classes.
 2. Execute a classe principal `PainelPrincipal.java`.
@@ -234,7 +234,7 @@ classDiagram
 
 ---
 
-## 🎨 Cores e Estilo
+## Cores e Estilo
 
 A classe `Colors` centraliza as cores utilizadas na interface:
 
@@ -246,8 +246,7 @@ A classe `Colors` centraliza as cores utilizadas na interface:
 
 ---
 
-## 🤖 Autor
+## Autor
 
-**Desenvolvido por:** Ismailer Gregorio
-📧 Contato: *(inserir e-mail se desejar)*
+**Desenvolvido por:** Ismailer Gregorio,Phablo,Cleber,Amanda Cesario
 📂 Projeto acadêmico / educacional — Java Swing e estruturas de dados.

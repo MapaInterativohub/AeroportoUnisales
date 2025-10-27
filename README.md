@@ -250,3 +250,4 @@ A classe `Colors` centraliza as cores utilizadas na interface:
 
 **Desenvolvido por:** Ismailer Gregorio,Phablo,Cleber,Amanda Cesario
 📂 Projeto acadêmico / educacional — Java Swing e estruturas de dados.
+teste

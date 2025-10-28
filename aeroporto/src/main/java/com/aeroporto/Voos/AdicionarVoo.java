@@ -34,8 +34,8 @@ public class AdicionarVoo extends JFrame {
 
         // Painel de status com imagem e informações de voos disponíveis/indisponíveis
         JPanel PainelStatus = new JPanel(new BorderLayout());
-        PainelStatus.setPreferredSize(new Dimension(350, 45));
-        PainelStatus.setMaximumSize(new Dimension(350, 45));
+        PainelStatus.setPreferredSize(new Dimension(350, 60));
+        PainelStatus.setMaximumSize(new Dimension(350, 60));
         PainelStatus.setOpaque(true);
         PainelStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
         PainelStatus.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
@@ -71,6 +71,13 @@ public class AdicionarVoo extends JFrame {
         JLabel textIndisponivel = new JLabel("Indisponível:");
         JLabel Indisponivel = new JLabel("0");
         Indisponivel.setText(Integer.toString(indisponivel));
+        Indisponivel.setBackground(cor.getVermelho());
+        Indisponivel.setOpaque(true);
+        Disponivel.setBackground(cor.getVerde());
+        Disponivel.setOpaque(true);
+        statusPanel.setBackground(cor.getBranco());
+        statusPanel.setOpaque(true);
+        statusPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
 
         // Adiciona labels ao painel de status
         statusPanel.add(textDisponivel);
@@ -163,8 +170,17 @@ public class AdicionarVoo extends JFrame {
             voos.adicionarVoos(voo);
 
             // Atualiza status de voos disponíveis
-            voos.listarVoos();
+            // voos.listarVoos();
+
             Disponivel.setText(Integer.toString(voos.listarVoosDisponivel()));
+            textNumeroVoo.setText("");
+            textOrigem.setText("");
+            textDestino.setText("");
+            textHorarioPartida.setText("");
+            textHorarioChegada.setText("");
+            numQuantidadePassageiros.setValue(0);
+
+            abrirTela(voos, checkIn);
         });
 
         JButton cancelar = new JButton("Cancelar");

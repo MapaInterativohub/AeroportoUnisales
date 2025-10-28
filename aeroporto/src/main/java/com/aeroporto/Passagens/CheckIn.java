@@ -40,8 +40,8 @@ public class CheckIn extends JFrame {
 
         // ---------- PAINEL DE STATUS ----------
         JPanel PainelStatus = new JPanel(new BorderLayout());
-        PainelStatus.setPreferredSize(new Dimension(350, 45));
-        PainelStatus.setMaximumSize(new Dimension(350, 45));
+        PainelStatus.setPreferredSize(new Dimension(350, 60));
+        PainelStatus.setMaximumSize(new Dimension(350, 60));
         PainelStatus.setOpaque(true);
         PainelStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -77,6 +77,14 @@ public class CheckIn extends JFrame {
         JLabel Indisponivel = new JLabel("0");
         Indisponivel.setText(Integer.toString(indisponivel));
         Disponivel.setText(Integer.toString(voos.listarVoosDisponivel() - indisponivel));
+
+        Indisponivel.setBackground(cor.getVermelho());
+        Indisponivel.setOpaque(true);
+        Disponivel.setBackground(cor.getVerde());
+        Disponivel.setOpaque(true);
+        statusPanel.setBackground(cor.getBranco());
+        statusPanel.setOpaque(true);
+        statusPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
 
         statusPanel.add(textDisponivel);
         statusPanel.add(Disponivel);

@@ -19,7 +19,7 @@ public class PainelPrincipal extends JFrame {
     public PainelPrincipal(Dados voos, Dados checkIn) {
         String titulo = "Painel de Voo";
         setTitle(titulo);
-        setSize(400, 500);
+        setSize(600, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -41,8 +41,8 @@ public class PainelPrincipal extends JFrame {
         add(Box.createVerticalStrut(2));
 
         JPanel PainelStatus = new JPanel(new BorderLayout());
-        PainelStatus.setPreferredSize(new Dimension(350, 45));
-        PainelStatus.setMaximumSize(new Dimension(350, 45));
+        PainelStatus.setPreferredSize(new Dimension(550, 60));
+        PainelStatus.setMaximumSize(new Dimension(550, 60));
         PainelStatus.setOpaque(true);
         PainelStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -57,9 +57,14 @@ public class PainelPrincipal extends JFrame {
 
         // Painel de status (com grid)
         JPanel statusPanel = new JPanel(new GridLayout(2, 2, 15, 5));
+        statusPanel.setBackground(cor.getBranco());
+        statusPanel.setOpaque(true);
+        statusPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
 
         JLabel textDisponivel = new JLabel("Disponível:");
         JLabel Disponivel = new JLabel("0");
+        Disponivel.setBackground(cor.getVerde());
+        Disponivel.setOpaque(true);
 
         int indisponivel = 0;
         for (Voo v : voos.listarVoos()) {
@@ -76,9 +81,12 @@ public class PainelPrincipal extends JFrame {
         }
         JLabel textIndisponivel = new JLabel("Indisponível:");
         JLabel Indisponivel = new JLabel("0");
-        
+
+        Indisponivel.setBackground(cor.getVermelho());
+        Indisponivel.setOpaque(true);
+
         Indisponivel.setText(Integer.toString(indisponivel));
-        Disponivel.setText(Integer.toString(voos.listarVoosDisponivel()-indisponivel));
+        Disponivel.setText(Integer.toString(voos.listarVoosDisponivel() - indisponivel));
 
         statusPanel.add(textDisponivel);
         statusPanel.add(Disponivel);
@@ -102,8 +110,8 @@ public class PainelPrincipal extends JFrame {
         // Painel Administrativo
         JPanel btnControleAdimistrativo = new JPanel();
         btnControleAdimistrativo.setLayout(new BoxLayout(btnControleAdimistrativo, BoxLayout.Y_AXIS));
-        btnControleAdimistrativo.setPreferredSize(new Dimension(350, 60));
-        btnControleAdimistrativo.setMaximumSize(new Dimension(350, 60));
+        btnControleAdimistrativo.setPreferredSize(new Dimension(550, 60));
+        btnControleAdimistrativo.setMaximumSize(new Dimension(550, 60));
         btnControleAdimistrativo.setBackground(cor.getCinza());
         btnControleAdimistrativo.setOpaque(true);
         btnControleAdimistrativo.setAlignmentX(Component.CENTER_ALIGNMENT); // centraliza
@@ -112,8 +120,8 @@ public class PainelPrincipal extends JFrame {
         textAdministrativo.setAlignmentX(Component.CENTER_ALIGNMENT); // centraliza dentro do painel
         textAdministrativo.setBackground(cor.getCinzaEscuro());
         textAdministrativo.setOpaque(true);
-        textAdministrativo.setPreferredSize(new Dimension(350, 10));
-        textAdministrativo.setMaximumSize(new Dimension(350, 10));
+        textAdministrativo.setPreferredSize(new Dimension(550, 10));
+        textAdministrativo.setMaximumSize(new Dimension(550, 10));
 
         // btnControleAdimistrativo.add(Box.createVerticalStrut(2));
         btnControleAdimistrativo.add(textAdministrativo);
@@ -121,28 +129,28 @@ public class PainelPrincipal extends JFrame {
         JPanel jPanelbtnAdminstrativo = new JPanel();
         jPanelbtnAdminstrativo.setOpaque(true);
         jPanelbtnAdminstrativo.setBackground(cor.getCinza());
-        jPanelbtnAdminstrativo.setPreferredSize(new Dimension(350, 100));
-        jPanelbtnAdminstrativo.setMaximumSize(new Dimension(350, 100));
+        jPanelbtnAdminstrativo.setPreferredSize(new Dimension(550, 100));
+        jPanelbtnAdminstrativo.setMaximumSize(new Dimension(550, 100));
         jPanelbtnAdminstrativo.setAlignmentX(Component.CENTER_ALIGNMENT); // centraliza
 
         // Botões dentro do painel cinza
-        JButton btnAddVoo = new JButton("Add Voo");
+        JButton btnAddVoo = new JButton("Adcionar Voo");
 
         btnAddVoo.addActionListener(e -> {
             abrirTela(new AdicionarVoo(voos, checkIn));
         });
 
-        JButton btnAddPassagem = new JButton("Com Psg");
+        JButton btnAddPassagem = new JButton("Comprar Passagem");
 
         btnAddPassagem.addActionListener(e -> {
             abrirTela(new AdicionarPassagem(voos, checkIn));
         });
-        JButton btnAprova = new JButton("Aprovar");
+        JButton btnAprova = new JButton("Aprovar Passagem");
         btnAprova.addActionListener(e -> {
             abrirTela(new AprovarPassagem(voos, checkIn));
         });
 
-        JButton btnCheckIn = new JButton("ChecIn");
+        JButton btnCheckIn = new JButton("Check-In");
 
         btnCheckIn.addActionListener(e -> {
             abrirTela(new CheckIn(voos, checkIn));
@@ -162,8 +170,8 @@ public class PainelPrincipal extends JFrame {
         // Painel de Voo
         JPanel jPanelVoo = new JPanel();
         jPanelVoo.setLayout(new BoxLayout(jPanelVoo, BoxLayout.Y_AXIS));
-        jPanelVoo.setPreferredSize(new Dimension(350, 300));
-        jPanelVoo.setMaximumSize(new Dimension(350, 300));
+        jPanelVoo.setPreferredSize(new Dimension(550, 500));
+        jPanelVoo.setMaximumSize(new Dimension(550, 500));
         jPanelVoo.setBackground(cor.getBranco());
         jPanelVoo.setOpaque(true);
         jPanelVoo.setAlignmentX(Component.CENTER_ALIGNMENT); // centraliza
@@ -178,7 +186,7 @@ public class PainelPrincipal extends JFrame {
                 }
             }
 
-            String t = "N°:" + v.getNumero() + " | Origem: " + v.getOrigem() + " | Destino: " + v.getDestino()
+            String t = "N°:" + v.getNumero() + "  |  Origem: " + v.getOrigem() + "  |  Destino: " + v.getDestino()
                     + " | Acentos: disp:" + acentosOcupado + "/ indi:" + (acentosDisponivel - acentosOcupado);
             JLabel text = new JLabel(t);
 
@@ -192,8 +200,8 @@ public class PainelPrincipal extends JFrame {
                 text.setBackground(cor.getVermelho()); // cheio (0 ou negativo)
             }
 
-            text.setPreferredSize(new Dimension(345, 23));
-            text.setMaximumSize(new Dimension(345, 23));
+            text.setPreferredSize(new Dimension(545, 23));
+            text.setMaximumSize(new Dimension(545, 23));
             text.setOpaque(true);
             text.setAlignmentX(Component.CENTER_ALIGNMENT);
             text.setBorder(new EmptyBorder(0, 10, 0, 10));

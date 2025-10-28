@@ -16,7 +16,7 @@ public class AdicionarPassagem extends JFrame {
     public AdicionarPassagem(Dados voos, Dados checkIn) {
         String titulo = "Adicionar Passagem";
         setTitle(titulo);
-        setSize(400, 500);
+        setSize(400, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -38,8 +38,8 @@ public class AdicionarPassagem extends JFrame {
 
         // Painel de status com imagem e contagem de voos disponíveis/indisponíveis
         JPanel PainelStatus = new JPanel(new BorderLayout());
-        PainelStatus.setPreferredSize(new Dimension(350, 45));
-        PainelStatus.setMaximumSize(new Dimension(350, 45));
+        PainelStatus.setPreferredSize(new Dimension(350, 60));
+        PainelStatus.setMaximumSize(new Dimension(350, 60));
         PainelStatus.setOpaque(true);
         PainelStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
         PainelStatus.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
@@ -73,6 +73,14 @@ public class AdicionarPassagem extends JFrame {
         Indisponivel.setText(Integer.toString(indisponivel));
         Disponivel.setText(Integer.toString(voos.listarVoosDisponivel() - indisponivel));
 
+        Indisponivel.setBackground(cor.getVermelho());
+        Indisponivel.setOpaque(true);
+        Disponivel.setBackground(cor.getVerde());
+        Disponivel.setOpaque(true);
+        statusPanel.setBackground(cor.getBranco());
+        statusPanel.setOpaque(true);
+        statusPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
+
         statusPanel.add(textDisponivel);
         statusPanel.add(Disponivel);
         statusPanel.add(textIndisponivel);
@@ -91,8 +99,8 @@ public class AdicionarPassagem extends JFrame {
 
         // Painel de seleção do voo e data
         JPanel PaineSelecaoVoo = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        PaineSelecaoVoo.setPreferredSize(new Dimension(350, 210));
-        PaineSelecaoVoo.setMaximumSize(new Dimension(350, 210));
+        PaineSelecaoVoo.setPreferredSize(new Dimension(350, 250));
+        PaineSelecaoVoo.setMaximumSize(new Dimension(350, 250));
         PaineSelecaoVoo.setBackground(cor.getCinza());
         PaineSelecaoVoo.setOpaque(true);
         PaineSelecaoVoo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,15 +134,13 @@ public class AdicionarPassagem extends JFrame {
 
         // Painel de assentos
         JPanel PainelAcentos = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        PainelAcentos.setPreferredSize(new Dimension(340, 150));
-        PainelAcentos.setMaximumSize(new Dimension(340, 150));
+        PainelAcentos.setPreferredSize(new Dimension(340, 200));
+        PainelAcentos.setMaximumSize(new Dimension(340, 200));
         PainelAcentos.setBackground(cor.getCinzaEscuro());
         PainelAcentos.setOpaque(true);
         PainelAcentos.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel testAcento = new JLabel("Assento:");
-        testAcento.setPreferredSize(new Dimension(300, 15));
-        PainelAcentos.add(testAcento);
+        // Adiciona o scrollPane ao painel de seleção de voo (NÃO o painel interno)
 
         ButtonGroup grupoAssentos = new ButtonGroup(); // Garante seleção única
 
@@ -143,23 +149,25 @@ public class AdicionarPassagem extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String vooSelecionado = (String) comboBox.getSelectedItem();
 
-                // Limpa botões antigos
+                // Remove tudo do painel antes de reconstruir
                 PainelAcentos.removeAll();
 
+                // Busca o voo correspondente
                 for (Voo v : voos.getListaVoos()) {
                     if (vooSelecionado.equals(v.getNumero())) {
-                        // Cria botões para cada assento
+
                         for (int x = 1; x <= v.getQuantidade(); x++) {
                             JRadioButton assento = new JRadioButton(String.valueOf(x));
                             assento.setPreferredSize(new Dimension(60, 30));
+
                             if (!v.getAssentos().get(x - 1).equals("disponivel")) {
-                                assento.setEnabled(false); // desativa assentos ocupados
+                                assento.setEnabled(false);
                             }
 
                             assento.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    poutrona = assento.getText(); // guarda número do assento
+                                    poutrona = assento.getText();
                                 }
                             });
 
@@ -169,9 +177,39 @@ public class AdicionarPassagem extends JFrame {
                     }
                 }
 
-                // Atualiza layout
+                // Atualiza o layout do Painel de Assentos
                 PainelAcentos.revalidate();
                 PainelAcentos.repaint();
+
+                // Remove JScrollPane anterior (para evitar duplicar)
+                for (Component c : PaineSelecaoVoo.getComponents()) {
+                    if (c instanceof JScrollPane) {
+                        PaineSelecaoVoo.remove(c);
+                    }
+                }
+
+                // Cria e adiciona um novo JScrollPane
+                JScrollPane scrollPane = new JScrollPane(PainelAcentos);
+                scrollPane.setPreferredSize(new Dimension(340, 190));
+                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                PaineSelecaoVoo.add(scrollPane, BorderLayout.CENTER);
+
+                // 🔥 FORÇA O PAINEL PRINCIPAL A REATUALIZAR O LAYOUT
+                PaineSelecaoVoo.revalidate();
+                PaineSelecaoVoo.repaint();
+
+                PainelAcentos.revalidate();
+                PainelAcentos.repaint();
+                scrollPane.getViewport().revalidate();
+                scrollPane.getViewport().repaint();
+
+                // 🔽 força rolar até o fim
+                SwingUtilities.invokeLater(() -> {
+                    JScrollBar barra = scrollPane.getVerticalScrollBar();
+                    // posiciona no máximo real do momento
+                    barra.setValue(barra.getMaximum());
+                });
             }
         });
 

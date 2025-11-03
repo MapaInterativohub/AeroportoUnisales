@@ -1,10 +1,31 @@
 package com.aeroporto.Voos;
 
-import javax.swing.*;
-import com.aeroporto.PainelPrincipal;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+
 import com.aeroporto.Dados.Colors;
 import com.aeroporto.Dados.Dados;
-import java.awt.*;
+import com.aeroporto.PainelPrincipalAdmin;
 
 public class AdicionarVoo extends JFrame {
     Colors cor = new Colors(); // Classe que armazena cores padrão
@@ -183,7 +204,7 @@ public class AdicionarVoo extends JFrame {
             abrirTela(voos, checkIn);
         });
 
-        JButton cancelar = new JButton("Cancelar");
+        JButton cancelar = new JButton("voltar");
         btnSalvarCancelar.add(cancelar);
 
         // Evento do botão Cancelar: fecha tela e abre PainelPrincipal
@@ -199,6 +220,6 @@ public class AdicionarVoo extends JFrame {
     // Método auxiliar para abrir a tela principal e fechar esta
     private void abrirTela(Dados voos, Dados checkIn) {
         dispose();
-        new PainelPrincipal(voos, checkIn);
+        new PainelPrincipalAdmin(voos, checkIn);
     }
 }

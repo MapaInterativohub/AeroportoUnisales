@@ -26,6 +26,7 @@ import javax.swing.SwingConstants;
 import com.aeroporto.Dados.Colors;
 import com.aeroporto.Dados.Dados;
 import com.aeroporto.PainelPrincipal;
+import com.aeroporto.PainelPrincipalAdmin;
 import com.aeroporto.Voos.Voo;
 
 public class AprovarPassagem extends JFrame {
@@ -253,11 +254,11 @@ public class AprovarPassagem extends JFrame {
     btnSalvarCancelar.setPreferredSize(new Dimension(350, 45));
     btnSalvarCancelar.setMaximumSize(new Dimension(350, 45));
 
-    JButton cancelar = new JButton("Cancelar");
+    JButton cancelar = new JButton("Voltar");
     btnSalvarCancelar.add(cancelar);
     add(btnSalvarCancelar);
 
-    cancelar.addActionListener(e -> abrirTela(new PainelPrincipal(voos, checkIn)));
+    cancelar.addActionListener(e -> abrirTela(new PainelPrincipalAdmin(voos, checkIn)));
   }
 
   private void abrirTela(JFrame tela) {

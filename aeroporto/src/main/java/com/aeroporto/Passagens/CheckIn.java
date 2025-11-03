@@ -1,16 +1,35 @@
 package com.aeroporto.Passagens;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
-import com.aeroporto.PainelPrincipal;
 import com.aeroporto.Dados.Colors;
 import com.aeroporto.Dados.Dados;
+import com.aeroporto.PainelPrincipal;
+import com.aeroporto.PainelPrincipalAdmin;
 import com.aeroporto.Voos.Voo;
 
 public class CheckIn extends JFrame {
@@ -257,12 +276,12 @@ public class CheckIn extends JFrame {
         btnSalvarCancelar.setPreferredSize(new Dimension(350, 45));
         btnSalvarCancelar.setMaximumSize(new Dimension(350, 45));
 
-        JButton cancelar = new JButton("Cancelar");
+        JButton cancelar = new JButton("Voltar");
         btnSalvarCancelar.add(cancelar);
         add(btnSalvarCancelar);
 
         cancelar.addActionListener(e -> {
-            abrirTela(new PainelPrincipal(voos, checkin)); // volta para painel principal
+            abrirTela(new PainelPrincipalAdmin(voos, checkin)); // volta para painel principal
         });
 
         // setVisible(true); // ativar visibilidade fora do construtor

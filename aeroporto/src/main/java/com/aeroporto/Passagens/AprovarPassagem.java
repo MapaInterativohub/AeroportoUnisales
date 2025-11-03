@@ -1,12 +1,32 @@
 package com.aeroporto.Passagens;
 
-import javax.swing.*;
-import com.aeroporto.PainelPrincipal;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+
 import com.aeroporto.Dados.Colors;
 import com.aeroporto.Dados.Dados;
+import com.aeroporto.PainelPrincipal;
 import com.aeroporto.Voos.Voo;
-import java.awt.*;
-import java.awt.event.*;
 
 public class AprovarPassagem extends JFrame {
   Colors cor = new Colors(); // Classe com cores padrão
@@ -168,14 +188,14 @@ public class AprovarPassagem extends JFrame {
               // Define aparência dependendo do status da compra
               switch (p.getStatusDeCompra()) {
                 case "cancelada":
-                  JLabel cancelado = new JLabel("<html><b>Compra</b> Cancelada</html>");
+                  JLabel cancelado = new JLabel("<html> Cancelado</html>");
                   Passagem.setBackground(cor.getVermelho());
                   descricao.setBackground(cor.getVermelho());
                   PanelBtnAprovacao.setBackground(cor.getVermelho());
                   PanelBtnAprovacao.add(cancelado);
                   break;
                 case "confirmada":
-                  JLabel confirmado = new JLabel("<html><b>Compra</b> Aprovada</html>");
+                  JLabel confirmado = new JLabel("<html>Aprovado</html>");
                   PanelBtnAprovacao.add(confirmado);
                   Passagem.setBackground(cor.getVerde());
                   descricao.setBackground(cor.getVerde());
